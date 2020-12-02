@@ -1,16 +1,15 @@
 // Remove the "extends Phaser.GameObjects.Container" , "super(config.scene);" and "this.add(this.musicButton);/this.add(this.sfcButton);" if container within container creates a problem
-class SoundButtons extends Phaser.GameObjects.Container
+class SoundButtons
 {
   constructor(config)
   {
-    super(config.scene);
+
     this.scene=config.scene;
 
     this.musicButton=new ToggleButton({scene:this.scene,backKey:'toggleBack',onIcon:'musicOn',offIcon:'musicOff',event:G.TOGGLE_MUSIC});
     this.sfxButton=new ToggleButton({scene:this.scene,backKey:'toggleBack',onIcon:'sfxOn',offIcon:'sfxOff',event:G.TOGGLE_SOUND});
 
-    this.add(this.musicButton);
-    this.add(this.sfxButton);
+
 
     this.musicButton.y=this.musicButton.height/2;
     this.musicButton.x=this.musicButton.width/2;

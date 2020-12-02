@@ -5,7 +5,7 @@ class MediaManager
         emitter.on(G.PLAY_SOUND, this.playSound, this);
         emitter.on(G.MUSIC_CHANGED, this.musicChanged, this);
     }
-    // If the background music object exists when emitter triggered than stop
+    // If the background music object exists when emitter triggered then stop
     musicChanged() {
       if (this.background) {
         if (model.musicOn==false) {

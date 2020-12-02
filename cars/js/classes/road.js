@@ -54,7 +54,8 @@ class Road extends Phaser.GameObjects.Container
     {
       return;
     }
-    emitter.emit(G.PLAY_SOUND,"whoosh");
+    mediaManager.playSound("whoosh");
+    //emitter.emit(G.PLAY_SOUND,"whoosh");
     if (this.car.x>0) {
       this.car.x=-this.displayWidth/4;
     } else {
@@ -100,11 +101,12 @@ class Road extends Phaser.GameObjects.Container
     {
       return;
     }
-    this.object.y+=this.vSpace / this.object.speed;
+    this.object.y+=(this.vSpace / this.object.speed)*model.speed;
     if (Collision.checkCollide(this.car,this.object)==true) {
       //this.car.alpha=.5;
       model.gameOver=true;
-      emitter.emit(G.PLAY_SOUND,"boom");
+      mediaManager.playSound("boom");
+      //emitter.emit(G.PLAY_SOUND,"boom");
       // This tween moves the car image to create the crash animation
       this.scene.tweens.add({targets: this.car,duration: 1000,y:game.config.height,angle:-270});
       // Waits for the crash event to finish before going to the game over screen
